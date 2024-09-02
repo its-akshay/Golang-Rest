@@ -68,18 +68,18 @@ func UpdateEvent(context *gin.Context) {
 	}
 
 	var updatedEvent models.Event
-	err = context.ShouldBindJSON(updatedEvent)
+	err = context.ShouldBindJSON(&updatedEvent)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "could not parse request data"})
-		return 
+		return
 	}
 	updatedEvent.ID = eventID
 	err = updatedEvent.Update()
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H {
+		context.JSON(http.StatusInternalServerError, gin.H{
 			"message": "count not update event "})
 		return
 	}
-	context.JSON(http.StatusOK, gin.H {
+	context.JSON(http.StatusOK, gin.H{
 		"message": "event updated successfully !"})
 }

@@ -1,5 +1,5 @@
 PUT  http://localhost:8080/events/2
-Content-Type: application/json
+content-Type: application/json
 
 {
     "name": "updated test event",
